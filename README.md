@@ -27,7 +27,7 @@ Create a simple (no-login) dashboard that integrates two components in two diffe
 
 Recommended tools:
 - ReactJs
-- Recharts
+- ApexCharts
 - MUI datatables
 - Dockerfile / docker image is preferred.
 
