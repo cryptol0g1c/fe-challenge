@@ -6,9 +6,10 @@ const AppContext = React.createContext(null);
 const initialState = {
   // Global States
   processState: '',
-
+  processing: false,
   // Transaction States
-  address: '0xdCBF3b2625790d9E0da6D5FD43792DAdAe01f6d5',
+  address: '',
+  // address: '0xdCBF3b2625790d9E0da6D5FD43792DAdAe01f6d5',
   transactions: [],
 };
 
@@ -19,17 +20,20 @@ const reducer = (state, action) => {
     case START_FETCHING:
       return {
         ...state,
+        processing: true,
       };
 
     case SET_TRANSACTIONS:
       return {
         ...state,
         transactions: action.payload.data.items,
+        processing: false,
       };
 
     case SET_ERROR:
       return {
         ...state,
+        processing: false,
       };
 
     default:

@@ -9,48 +9,53 @@ import Container from '@mui/material/Container';
 import { Button, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
+// Assets
+import { wording } from '../../utils/constants';
+
 const SearchManager = () => {
-  // const { state, dispatch } = useContext(AppContext);
 
-  // const actions = actionsDisptachers(dispatch);
-
-  // const { address } = state;
-
-  // useEffect(() => {
-  //   actions.getTransactions(address);
-  // }, [address]);
 
   const {
     formValues,
+    formState,
     isFormValid,
     handleInputChange,
     handleOnBlurEvent,
+    checkInputError,
+    handleSubmit,
   } = useTransactionsForm();
+
+  const { ERROR_TRANSACATION, PLACEHOLDER_TRANSACTION, SEARCH } = wording;
 
   return (
     <>
       <Container>
-        <form noValidate autoComplete="off">
+        <form autoComplete="off" onSubmit={handleSubmit}>
           <TextField 
-            label="Address"
+            label={PLACEHOLDER_TRANSACTION}
             variant="outlined"
             fullWidth
             required
             onChange={handleInputChange}
             onBlur={handleOnBlurEvent}
             name='address'
+            error={checkInputError('address')}
+            value={formValues.address}
+            helperText={checkInputError('address') ? ERROR_TRANSACATION : ''}
           />
 
           <Button
             variant="contained"
             type="submit"
             disableElevation
+            disabled={!isFormValid}
             endIcon={<SearchIcon />}
             sx={{
-              marginTop: "10px"
+              marginTop: "16px"
             }}
+            
           >
-            Buscar
+            {SEARCH}
           </Button>
  
         </form>

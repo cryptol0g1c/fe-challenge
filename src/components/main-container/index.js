@@ -1,6 +1,5 @@
 // Module dependencies
 import { useContext, useEffect, useState } from 'react';
-import actionsDisptachers from '../../reducers/actions-dispatchers';
 import { AppContext } from '../../reducers';
 
 // UI Components
@@ -9,44 +8,51 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SearchManager from '../search-manager';
-import GridViewIcon from '@mui/icons-material/GridView';
-import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
+import Loading from '../loading';
+// import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
+
+// Assets
+import { wording } from '../../utils/constants';
 
 const MainContainer = () => {
   const { state, dispatch } = useContext(AppContext);
   const [tabValue, setTabValue] = useState(0);
 
-  const actions = actionsDisptachers(dispatch);
+  const { processing } = state;
 
-  const { address } = state;
+  const { PAGE_TITLE } = wording;
 
-  useEffect(() => {
-    actions.getTransactions(address);
-  }, [address]);
-  
   const handleTabChange = (_, newTabValue) => {
     setTabValue(newTabValue);
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <AppsOutlinedIcon color='primary' />
+    <Box sx={{ width: '100%' }} mt={4}>
+      {/* <AppsOutlinedIcon color='primary' /> */}
       <Typography
         variant='h4'
         component='h1'
         color='primary'
         align='center'
+        mb={3}
       >
-        Blockchain Data
+        {PAGE_TITLE}
       </Typography>
 
       <SearchManager />
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs value={tabValue} onChange={handleTabChange} aria-label="basic tabs example">
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-        </Tabs>
-      </Box>
+
+      {
+        processing ? (
+          <Loading />
+          ) : (
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs value={tabValue} onChange={handleTabChange} aria-label="basic tabs example">
+                <Tab label="Item One" />
+                <Tab label="Item Two" />
+              </Tabs>
+            </Box>
+          )
+      }
     </Box>
   );
 };

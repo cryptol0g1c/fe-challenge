@@ -4,7 +4,7 @@ import actions from './actions';
 
 const actionsDisptachers = (dispatch) => {
   const apiKey = process.env.REACT_APP_COVALENT_API_KEY;
-
+  
   const { SET_TRANSACTIONS, START_FETCHING, SET_ERROR } = actions;
 
   /**
