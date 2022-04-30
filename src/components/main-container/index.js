@@ -3,12 +3,10 @@ import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../reducers';
 
 // UI Components
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import SearchManager from '../search-manager';
+import { Box, Tabs, Tab, Typography } from '@mui/material';
+import SearchForm from '../search-form';
 import Loading from '../loading';
+import DashboardTabs from '../dashboard-tabs';
 // import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 
 // Assets
@@ -16,15 +14,10 @@ import { wording } from '../../utils/constants';
 
 const MainContainer = () => {
   const { state, dispatch } = useContext(AppContext);
-  const [tabValue, setTabValue] = useState(0);
 
   const { processing } = state;
 
   const { PAGE_TITLE } = wording;
-
-  const handleTabChange = (_, newTabValue) => {
-    setTabValue(newTabValue);
-  }
 
   return (
     <Box sx={{ width: '100%' }} mt={4}>
@@ -39,20 +32,9 @@ const MainContainer = () => {
         {PAGE_TITLE}
       </Typography>
 
-      <SearchManager />
+      <SearchForm />
 
-      {
-        processing ? (
-          <Loading />
-          ) : (
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <Tabs value={tabValue} onChange={handleTabChange} aria-label="basic tabs example">
-                <Tab label="Item One" />
-                <Tab label="Item Two" />
-              </Tabs>
-            </Box>
-          )
-      }
+      { processing ? <Loading /> : <DashboardTabs /> }
     </Box>
   );
 };

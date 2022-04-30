@@ -5,16 +5,13 @@ import { AppContext } from "../../reducers";
 import useTransactionsForm from "../../hooks/useTransactionsForm";
 
 // UI components
-import Container from '@mui/material/Container';
-import { Button, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 // Assets
 import { wording } from '../../utils/constants';
 
-const SearchManager = () => {
-
-
+const SearchForm = () => {
   const {
     formValues,
     formState,
@@ -25,14 +22,14 @@ const SearchManager = () => {
     handleSubmit,
   } = useTransactionsForm();
 
-  const { ERROR_TRANSACATION, PLACEHOLDER_TRANSACTION, SEARCH } = wording;
+  const { TRANSACTION_ERROR, TRANSACTION_PLACEHOLDER, SEARCH } = wording;
 
   return (
     <>
       <Container>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <TextField 
-            label={PLACEHOLDER_TRANSACTION}
+            label={TRANSACTION_PLACEHOLDER}
             variant="outlined"
             fullWidth
             required
@@ -41,7 +38,7 @@ const SearchManager = () => {
             name='address'
             error={checkInputError('address')}
             value={formValues.address}
-            helperText={checkInputError('address') ? ERROR_TRANSACATION : ''}
+            helperText={checkInputError('address') ? TRANSACTION_ERROR : ''}
           />
 
           <Button
@@ -51,7 +48,7 @@ const SearchManager = () => {
             disabled={!isFormValid}
             endIcon={<SearchIcon />}
             sx={{
-              marginTop: "16px"
+              marginTop: "16px",
             }}
             
           >
@@ -65,4 +62,4 @@ const SearchManager = () => {
   );
 };
 
-export default SearchManager;
+export default SearchForm;
