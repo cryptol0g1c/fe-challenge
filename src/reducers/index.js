@@ -8,8 +8,9 @@ const initialState = {
   processState: '',
   processing: false,
   // Transaction States
-  address: '0xdCBF3b2625790d9E0da6D5FD43792DAdAe01f6d5',
+  address: '',
   // address: '0xdCBF3b2625790d9E0da6D5FD43792DAdAe01f6d5',
+  // address: '0x9d30fb5Ffd9B117edA461F4655AaB8C7ddC0C36E',
   transactions: [],
 };
 

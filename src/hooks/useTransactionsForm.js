@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { AppContext, reducer } from '../reducers';
 import actionsDisptachers from '../reducers/actions-dispatchers';
 
-import { validateAddress } from '../utils/helpers';
+import { validateAddress } from '../utils/form-helpers';
 
 const useTransactionsForm = () => {
   const { state, dispatch } = useContext(AppContext);

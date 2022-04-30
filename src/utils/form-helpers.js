@@ -1,4 +1,3 @@
-// TODO: use web3.utils.isAddress(address) method to validate address or a robust one
 /**
  * Checks if the given string is an address
  * @method validateAddress
