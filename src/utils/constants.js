@@ -1,8 +1,9 @@
-// List of wording
+// List of wording.
 const wording = {
   // Globals
   PAGE_TITLE: 'Blockchain Data',
   SEARCH: 'search',
+  ARIA_LABEL_TABS: 'Data tabs',
 
   // Transactions
   TRANSACTION_TAB: 'Transactions by Address',
@@ -13,12 +14,14 @@ const wording = {
   ANALITICS_TAB: 'Analitics by Token',
   SELECT_TOKEN: 'Select Token',
   SERIES_NAME: 'Token value',
-  CHART_TITLE: 'Historical token prices',
+  CHART_TITLE_MONTHLY: 'Historical Prices - Monthly',
+  CHART_TITLE_WEEKLY: 'Historical Prices - Weekly',
   CHART_AXIS_LABEL: 'Dates',
+  TOKEN_LOGO_ALT: 'Token Logo',
 };
 
-// List of token, with the address value and the matching name
-const tokenslist = [
+// List of token, with the address value and the matching name.
+const tokensList = [
   {
     value: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
     label: 'Tether USD',
@@ -37,4 +40,4 @@ const tokenslist = [
   },
 ];
 
-export { wording, tokenslist };
+export { wording, tokensList };

@@ -1,5 +1,5 @@
 /**
- * Checks if the given string is an address
+ * Checks if the given string is a valid address.
  * @method validateAddress
  * @param {String} address the given HEX adress
  * @return {Boolean}

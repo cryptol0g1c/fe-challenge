@@ -7,7 +7,7 @@ const {
  } = wording;
 
 /**
- * Function. Create the config object to feed into line chart.
+ * Create the config object to feed into line chart.
  * @param {Array} dataSeriesToken 
  * @param {Array} xaxisToken 
  * @returns Object. 
@@ -69,7 +69,7 @@ const getLinealPricesConfig = (dataSeriesToken, xaxisToken) => ({
 });
 
 /**
- * Function. Map the API response to match the data series array.
+ * Map the API response to match the data series array.
  * @param {Array} tokenPrices 
  * @returns Array.
  */
@@ -78,7 +78,7 @@ const mapPricesToDataSeries = (tokenPrices) => (
 );
 
 /**
- * Function. Map the API response to match the x axis array.
+ * Map the API response to match the x axis array.
  * @param {Array} tokenPrices 
  * @returns Array.
  */

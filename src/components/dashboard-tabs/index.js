@@ -14,11 +14,11 @@ import { wording } from '../../utils/constants';
 const DashboardTabs = () => {
   const [tabValue, setTabValue] = useState('0');
 
-  const { ANALITICS_TAB, TRANSACTION_TAB } = wording;
+  const { ANALITICS_TAB, ARIA_LABEL_TABS, TRANSACTION_TAB } = wording;
 
   const handleTabChange = (_, newTabValue) => {
     setTabValue(newTabValue);
-  }
+  };
 
   const tabList = [
     { 
@@ -37,7 +37,7 @@ const DashboardTabs = () => {
     <Container>
       <TabContext value={tabValue}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }} mt={4} mb={3}>
-          <Tabs value={tabValue} onChange={handleTabChange} aria-label="data tabs">
+          <Tabs value={tabValue} onChange={handleTabChange} aria-label={ARIA_LABEL_TABS}>
             {
               tabList.map(
                 ({ label, tabId }) => <Tab label={label} value={tabId} key={`tabId-${tabId}`} />

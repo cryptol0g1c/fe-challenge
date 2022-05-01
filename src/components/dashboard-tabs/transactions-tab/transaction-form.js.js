@@ -1,20 +1,16 @@
 // Module dependencies
-import { useContext, useEffect, useState } from "react";
-import actionsDisptachers from "../../reducers/actions-dispatchers";
-import { AppContext } from "../../reducers";
-import useTransactionsForm from "../../hooks/useTransactionsForm";
+import useTransactionsForm from "../../../hooks/useTransactionsForm";
 
 // UI components
-import { Button, Container, TextField } from "@mui/material";
+import { Button, Container, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 // Assets
-import { wording } from '../../utils/constants';
+import { wording } from '../../../utils/constants';
 
-const SearchForm = () => {
+const TransactionForm = () => {
   const {
     formValues,
-    formState,
     isFormValid,
     handleInputChange,
     handleOnBlurEvent,
@@ -50,16 +46,13 @@ const SearchForm = () => {
             sx={{
               marginTop: "16px",
             }}
-            
           >
             {SEARCH}
           </Button>
- 
         </form>
       </Container>
     </>
-
   );
 };
 
-export default SearchForm;
+export default TransactionForm;

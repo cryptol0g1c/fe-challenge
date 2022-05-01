@@ -19,7 +19,10 @@ const actionsDisptachers = (dispatch) => {
     });
   };
   
-
+  /**
+   * Gets the transactions associated with a given address.
+   * @param {String} address Wallet address.
+   */
   const getTransactions = (address) => {
     const transactionUrl = `/1/address/${address}/transactions_v2/`;
     const params = {
@@ -38,7 +41,12 @@ const actionsDisptachers = (dispatch) => {
       .catch(err => handleError(err.response.data));
   };
 
-
+  /**
+   * Gets the general data and prices associated with a given address for a period fo time.
+   * @param {String} address Contract address.
+   * @param {Date} from The start day of the historical price range. 
+   * @param {Date} to The end day of the historical price range.
+   */
   const getHistoricalPrices = (address, from, to) => {
     const pricesUrl = `/pricing/historical_by_addresses_v2/1/usd/${address}/`;
 
@@ -47,6 +55,8 @@ const actionsDisptachers = (dispatch) => {
       from,
       to,
     };
+
+    dispatch({ type: START_FETCHING });
 
     client.get(pricesUrl, { params })
       .then(({ data }) => {

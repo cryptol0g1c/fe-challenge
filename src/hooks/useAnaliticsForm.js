@@ -4,21 +4,21 @@ import { AppContext } from '../reducers';
 import actionsDisptachers from '../reducers/actions-dispatchers';
 
 // Assets
-import { tokenslist } from '../utils/constants';
+import { tokensList } from '../utils/constants';
 
 
 const useAnaliticsForm = () => {
-  const { state, dispatch } = useContext(AppContext);
-  const { tokenPrices } = state;
+  const { dispatch } = useContext(AppContext);
+  const [tokenAddress, setTokenAddress] = useState(tokensList[0].value);
 
   const actions = actionsDisptachers(dispatch);
 
-  const [tokenAddress, setTokenAddress] = useState(tokenslist[0].value);
-
+  // Set Dates for fetch
   let to = new Date();
   let from = new Date();
   from.setDate(from.getDate()-30);
 
+  // Fetch token information every time that the token address change
   useEffect(() => {
     actions.getHistoricalPrices(
       tokenAddress,
@@ -27,6 +27,10 @@ const useAnaliticsForm = () => {
     );
   }, [tokenAddress])
   
+  /**
+   * Handle the token selection.
+   * @param {*} event Interface, represent the default html event. 
+   */
   const handleDropdownChange = ({ target }) => {
     setTokenAddress(target.value);
   };

@@ -4,10 +4,11 @@ import useAnaliticsForm from '../../../hooks/useAnaliticsForm';
 import { AppContext } from '../../../reducers';
 
 // UI Components
-import { Avatar, Box, MenuItem, Chip, TextField, Stack } from '@mui/material';
+import { Avatar, Chip, MenuItem, Stack, TextField } from '@mui/material';
 
 // Assets
-import { tokenslist, wording } from '../../../utils/constants';
+import { tokensList, wording } from '../../../utils/constants';
+
 
 const TokenSelector = () => {
   const { state } = useContext(AppContext);
@@ -15,7 +16,7 @@ const TokenSelector = () => {
 
   const { handleDropdownChange, tokenAddress } = useAnaliticsForm();
 
-  const { SELECT_TOKEN } = wording;
+  const { SELECT_TOKEN, TOKEN_LOGO_ALT } = wording;
 
   return (
     <Stack direction="row" spacing={2} mb={2} sx={{
@@ -34,7 +35,7 @@ const TokenSelector = () => {
           width: '200px'
         }}
       >
-        {tokenslist.map(({ value, label}) => (
+        {tokensList.map(({ value, label}) => (
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>
@@ -42,7 +43,7 @@ const TokenSelector = () => {
       </TextField>
 
       <Chip
-        avatar={<Avatar alt="Natacha" src={tokenData.logo_url} />}
+        avatar={<Avatar alt={TOKEN_LOGO_ALT} src={tokenData.logo_url} />}
         label={tokenData.contract_ticker_symbol}
         variant="outlined"
       />

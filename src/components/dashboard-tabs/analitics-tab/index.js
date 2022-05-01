@@ -8,65 +8,60 @@ import {
 } from '../../../utils/chart-helpers';
 
 // UI Components
-import { Grid, Paper, Typography } from "@mui/material";
-import Chart from "react-apexcharts";
+import { Grid } from '@mui/material';
 import TokenSelector from './token-selector';
+import ChartCard from './chart-card';
+import Loading from '../../loading';
+
+// Assets
+import { wording } from '../../../utils/constants';
 
 
 const AnaliticsTab = () => {
   const { state } = useContext(AppContext);
-  const { tokenPrices } = state;
+  const { tokenPrices, processing } = state;
 
+  const { CHART_TITLE_MONTHLY, CHART_TITLE_WEEKLY } = wording;
+
+  // Charts Configs and Data processing
   const dataSeriesToken = mapPricesToDataSeries(tokenPrices);
   const xaxisToken = mapPricesToXAxis(tokenPrices);
 
   const monthlyConfig =  getLinealPricesConfig(dataSeriesToken, xaxisToken);
   const weeklyConfig =  getLinealPricesConfig(dataSeriesToken.slice(-7), xaxisToken.slice(-7));
 
-  return (
-      <>
-        <TokenSelector />
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant='h6'
-              component='h6'
-              color='primary'
-              mb={3}
-            >
-              Historical Prices - Monthly
-            </Typography>
-            <Paper elevation={3}>
-              <Chart
-                options={monthlyConfig.options}
-                series={monthlyConfig.series}
-                type="line"
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant='h6'
-              component='h6'
-              color='primary'
-              mb={3}
-            >
-              Historical Prices - Weekly
-            </Typography>
-            <Paper elevation={3}>
-              <Chart
-                options={weeklyConfig.options}
-                series={weeklyConfig.series}
-                type="line"
-              />
-            </Paper>
-          </Grid>
-    
-        </Grid>
-      </>
+  const chartsList = [
+    {
+      options: monthlyConfig.options,
+      series: monthlyConfig.series,
+      title: CHART_TITLE_MONTHLY,
+    },
+    {
+      options: weeklyConfig.options,
+      series: weeklyConfig.series,
+      title: CHART_TITLE_WEEKLY,
+    },
+  ];
 
+  return (
+    <>
+      <TokenSelector />
+
+      {
+        processing ? ( <Loading /> ) : (
+          <Grid container spacing={2}>
+            {
+              chartsList.map(chartConfig => (
+                <Grid item xs={12} sm={6}>
+                  <ChartCard {...chartConfig} />
+                </Grid>
+              ))
+            }
+          </Grid>
+        )
+      }
+    </>
   );
 };
-
 
 export default AnaliticsTab;
