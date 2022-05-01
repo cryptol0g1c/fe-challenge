@@ -12,7 +12,7 @@ import AnaliticsTab from './analitics-tab';
 import { wording } from '../../utils/constants';
 
 const DashboardTabs = () => {
-  const [tabValue, setTabValue] = useState('1');
+  const [tabValue, setTabValue] = useState('0');
 
   const { ANALITICS_TAB, TRANSACTION_TAB } = wording;
 
@@ -23,20 +23,20 @@ const DashboardTabs = () => {
   const tabList = [
     { 
       tabId: '0',
-      label: TRANSACTION_TAB,
-      component: <TransationsTab />,
+      label: ANALITICS_TAB,
+      component: <AnaliticsTab />
     },
     { 
       tabId: '1',
-      label: ANALITICS_TAB,
-      component: <AnaliticsTab />
+      label: TRANSACTION_TAB,
+      component: <TransationsTab />,
     },
   ];
 
   return (
     <Container>
       <TabContext value={tabValue}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }} mt={4}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }} mt={4} mb={3}>
           <Tabs value={tabValue} onChange={handleTabChange} aria-label="data tabs">
             {
               tabList.map(

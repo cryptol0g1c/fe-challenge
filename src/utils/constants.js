@@ -1,3 +1,4 @@
+// List of wording
 const wording = {
   // Globals
   PAGE_TITLE: 'Blockchain Data',
@@ -11,25 +12,28 @@ const wording = {
   // Analitics
   ANALITICS_TAB: 'Analitics by Token',
   SELECT_TOKEN: 'Select Token',
-
+  SERIES_NAME: 'Token value',
+  CHART_TITLE: 'Historical token prices',
+  CHART_AXIS_LABEL: 'Dates',
 };
 
+// List of token, with the address value and the matching name
 const tokenslist = [
   {
     value: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-    label: 'Tether USD (USDT)',
-  },
-  {
-    value: '0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
-    label: 'BNB (BNB)',
+    label: 'Tether USD',
   },
   {
     value: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-    label: 'USD Coin (USDC)',
+    label: 'USD Coin',
   },
   {
     value: '0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39',
-    label: 'HEX (HEX)',
+    label: 'HEX',
+  },
+  {
+    value: '0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
+    label: 'BNB',
   },
 ];
 

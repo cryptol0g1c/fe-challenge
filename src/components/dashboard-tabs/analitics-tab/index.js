@@ -1,23 +1,24 @@
 // Module dependencies
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../../../reducers';
-import actionsDisptachers from '../../../reducers/actions-dispatchers';
+import {
+  getLinealPricesConfig,
+  mapPricesToDataSeries,
+  mapPricesToXAxis
+} from '../../../utils/chart-helpers';
 
 // UI Components
-import { Container, Grid, Paper } from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import Chart from "react-apexcharts";
 import TokenSelector from './token-selector';
 
 
-// Assets
-import { getLinealPricesConfig } from '../../../utils/chart-helpers';
-
 const AnaliticsTab = () => {
-  const { state, dispatch } = useContext(AppContext);
-  const { tokenAddress, tokenPrices } = state;
+  const { state } = useContext(AppContext);
+  const { tokenPrices } = state;
 
-  const dataSeriesToken = tokenPrices.map(({ price }) => price.toFixed(2));
-  const xaxisToken = tokenPrices.map(({ date }) => date);
+  const dataSeriesToken = mapPricesToDataSeries(tokenPrices);
+  const xaxisToken = mapPricesToXAxis(tokenPrices);
 
   const monthlyConfig =  getLinealPricesConfig(dataSeriesToken, xaxisToken);
   const weeklyConfig =  getLinealPricesConfig(dataSeriesToken.slice(-7), xaxisToken.slice(-7));
@@ -27,6 +28,14 @@ const AnaliticsTab = () => {
         <TokenSelector />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
+            <Typography
+              variant='h6'
+              component='h6'
+              color='primary'
+              mb={3}
+            >
+              Historical Prices - Monthly
+            </Typography>
             <Paper elevation={3}>
               <Chart
                 options={monthlyConfig.options}
@@ -36,6 +45,14 @@ const AnaliticsTab = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
+            <Typography
+              variant='h6'
+              component='h6'
+              color='primary'
+              mb={3}
+            >
+              Historical Prices - Weekly
+            </Typography>
             <Paper elevation={3}>
               <Chart
                 options={weeklyConfig.options}

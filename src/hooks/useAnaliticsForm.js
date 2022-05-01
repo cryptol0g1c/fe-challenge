@@ -2,11 +2,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../reducers';
 import actionsDisptachers from '../reducers/actions-dispatchers';
-import {
-  getLinealPricesConfig,
-  mapPricesToDataSeries,
-  mapPricesToXAxis
-} from '../utils/chart-helpers';
 
 // Assets
 import { tokenslist } from '../utils/constants';

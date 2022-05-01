@@ -1,7 +1,21 @@
+// Assets
+import { wording } from './constants';
+
+const {
+  SERIES_NAME,
+  CHART_AXIS_LABEL,
+ } = wording;
+
+/**
+ * Function. Create the config object to feed into line chart.
+ * @param {Array} dataSeriesToken 
+ * @param {Array} xaxisToken 
+ * @returns Object. 
+ */
 const getLinealPricesConfig = (dataSeriesToken, xaxisToken) => ({
   series: [
     {
-      name: "series-1",
+      name: SERIES_NAME,
       data: dataSeriesToken
     }
   ],
@@ -28,14 +42,10 @@ const getLinealPricesConfig = (dataSeriesToken, xaxisToken) => ({
     stroke: {
       curve: 'smooth'
     },
-    title: {
-      text: 'Average High & Low Temperature',
-      align: 'left'
-    },
     grid: {
       borderColor: '#e7e7e7',
       row: {
-        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        colors: ['#f3f3f3', 'transparent'],
         opacity: 0.5
       },
     },
@@ -45,16 +55,9 @@ const getLinealPricesConfig = (dataSeriesToken, xaxisToken) => ({
     xaxis: {
       categories: xaxisToken,
       title: {
-        text: 'Month'
+        text: CHART_AXIS_LABEL
       }
     },
-    // yaxis: {
-    //   title: {
-    //     text: 'Temperature'
-    //   },
-    //   min: 5,
-    //   max: 40
-    // },
     legend: {
       position: 'top',
       horizontalAlign: 'right',
@@ -65,10 +68,20 @@ const getLinealPricesConfig = (dataSeriesToken, xaxisToken) => ({
   },
 });
 
+/**
+ * Function. Map the API response to match the data series array.
+ * @param {Array} tokenPrices 
+ * @returns Array.
+ */
 const mapPricesToDataSeries = (tokenPrices) => (
   tokenPrices.map(({ price }) => price.toFixed(2))
 );
 
+/**
+ * Function. Map the API response to match the x axis array.
+ * @param {Array} tokenPrices 
+ * @returns Array.
+ */
 const mapPricesToXAxis = (tokenPrices) => (
   tokenPrices.map(({ date }) => date)
 );
