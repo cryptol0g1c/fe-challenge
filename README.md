@@ -1,33 +1,31 @@
-# React Front-End challenge
+## Cryptologic
 
-## Challenge
-Create a simple (no-login) dashboard that integrates two components in two different tabs:
+React Front-End challenge
 
-1. A table component that fetches API REST information from a given endpoint
-  
-    a. We recommend CovalentHQ /transactions_v2/ endpoint (you will need an api key)
+----------------------------------------------------------
 
-    b. The table should show the key endpoint properties such as: tx id, gas fee, timestamp, blocknumber, etc.
+Run manually
 
-    c. The table should let the user sort the records by timestamp and blocknumber.
+1 - Create .env file at root folder.
 
+2 - Complete .env following its .env.example model.
 
-2. A chart component (like apexcharts) to show on different types (like pie and bars) to show stats also coming from APIs endpoint (we recommend snowtrace or covalent stats)
+3 - Run 'npm i' command in root folder.
 
-    a. The components should render on this new tab and show proper values coming from the endpoint.
+4 - Run frontend service with 'npm start' command.
 
-    b. Any chart that reflects value based on the endpoint that it is recommended to tuse.
+5 - Access to the app trought 'localhost:3000'.
 
-## Deliverable
+----------------------------------------------------------
 
-- A React application along with the instructions to satisfy dependencies and run it.
-- The application should be delivered by forking this repository, upload the code and create a PR for reviewing.
+Run with Docker
 
-## Tools
+1 - Create .env file at root folder.
 
-Recommended tools:
-- ReactJs
-- ApexCharts
-- MUI datatables
-- Dockerfile / docker image is preferred.
+2 - Complete .env following its .env.example model.
 
+3 - Make sure that you have installed Docker and you can run docker-compose.
+
+4 - Go to root foolder and run 'docker-compose up'.
+
+5 - Access to the app trought 'localhost:3000'.

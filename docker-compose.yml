@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    image: fe-challenge:react
+    container_name: fe-challenge
