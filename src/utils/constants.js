@@ -2,6 +2,7 @@
 const wording = {
   // Globals
   PAGE_TITLE: 'Blockchain Data',
+  NAV_DESCRIPTION: 'React Front-End challenge',
   SEARCH: 'search',
   ARIA_LABEL_TABS: 'Data tabs',
 
