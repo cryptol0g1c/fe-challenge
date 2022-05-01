@@ -1,5 +1,6 @@
 const actions = {
   SET_TRANSACTIONS: Symbol('SET_TRANSACTIONS'),
+  SET_PRICES: Symbol('SET_PRICES'),
 
   // Fetch
   START_FETCHING: Symbol('START_FETCHING'),

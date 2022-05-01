@@ -5,7 +5,7 @@ import actions from './actions';
 const actionsDisptachers = (dispatch) => {
   const apiKey = process.env.REACT_APP_COVALENT_API_KEY;
   
-  const { SET_TRANSACTIONS, START_FETCHING, SET_ERROR } = actions;
+  const { SET_TRANSACTIONS, SET_ERROR, SET_PRICES, START_FETCHING } = actions;
 
   /**
    * Funtion to handle error with reducer (save error message in context).
@@ -21,11 +21,14 @@ const actionsDisptachers = (dispatch) => {
   
 
   const getTransactions = (address) => {
-    const transactionUrl = `/1/address/${address}/transactions_v2/?&key=${apiKey}`;
+    const transactionUrl = `/1/address/${address}/transactions_v2/`;
+    const params = {
+      key: apiKey,
+    };
 
     dispatch({ type: START_FETCHING });
 
-    client.get(transactionUrl)
+    client.get(transactionUrl, { params })
       .then(({ data }) => {
         dispatch({
           type: SET_TRANSACTIONS,
@@ -35,7 +38,28 @@ const actionsDisptachers = (dispatch) => {
       .catch(err => handleError(err.response.data));
   };
 
-  return { getTransactions };
+
+  const getHistoricalPrices = (address, from, to) => {
+    const pricesUrl = `/pricing/historical_by_addresses_v2/1/usd/${address}/`;
+
+    const params = {
+      key: apiKey,
+      from,
+      to,
+    };
+
+    client.get(pricesUrl, { params })
+      .then(({ data }) => {
+        dispatch({
+          type: SET_PRICES,
+          payload: data,
+        });
+      })
+      .catch(err => handleError(err.response.data));
+  };
+
+
+  return { getTransactions, getHistoricalPrices };
 };
 
 export default actionsDisptachers;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { AppContext, reducer } from '../reducers';
+import { AppContext } from '../reducers';
 import actionsDisptachers from '../reducers/actions-dispatchers';
 
 import { validateAddress } from '../utils/form-helpers';

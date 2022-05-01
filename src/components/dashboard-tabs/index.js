@@ -12,7 +12,7 @@ import AnaliticsTab from './analitics-tab';
 import { wording } from '../../utils/constants';
 
 const DashboardTabs = () => {
-  const [tabValue, setTabValue] = useState('0');
+  const [tabValue, setTabValue] = useState('1');
 
   const { ANALITICS_TAB, TRANSACTION_TAB } = wording;
 
