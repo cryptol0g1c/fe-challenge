@@ -52,7 +52,7 @@ const AnaliticsTab = () => {
           <Grid container spacing={2}>
             {
               chartsList.map(chartConfig => (
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} key={chartConfig.title}>
                   <ChartCard {...chartConfig} />
                 </Grid>
               ))

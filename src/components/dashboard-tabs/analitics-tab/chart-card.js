@@ -1,5 +1,5 @@
 // Module dependencies
-import { object, string } from 'prop-types';
+import { array, object, string } from 'prop-types';
 
 // UI Components
 import { Paper, Typography } from '@mui/material';
@@ -29,7 +29,7 @@ const ChartCard = ({ options, series, title }) => {
 
 ChartCard.propTypes = {
   options: object.isRequired,
-  series: object.isRequired,
+  series: array.isRequired,
   title: string,
 };
 
