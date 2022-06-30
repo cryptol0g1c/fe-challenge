@@ -1,33 +1,76 @@
-# React Front-End challenge
+## Deployed URL
 
-## Challenge
-Create a simple (no-login) dashboard that integrates two components in two different tabs:
+https://cryptologic-front-challenge.vercel.app/
 
-1. A table component that fetches API REST information from a given endpoint
-  
-    a. We recommend CovalentHQ /transactions_v2/ endpoint (you will need an api key)
+https://cryptologic-front-challenge.vercel.app/transactions/0xa79E63e78Eec28741e711f89A672A4C40876Ebf3
 
-    b. The table should show the key endpoint properties such as: tx id, gas fee, timestamp, blocknumber, etc.
+https://cryptologic-front-challenge.vercel.app/stats
 
-    c. The table should let the user sort the records by timestamp and blocknumber.
+Original repo: https://github.com/juanmavillarraza/cryptologic-front-challenge (I forgot to fork at the begenning, just if you wanna check commit history)
 
+## Build and run with docker
 
-2. A chart component (like apexcharts) to show on different types (like pie and bars) to show stats also coming from APIs endpoint (we recommend snowtrace or covalent stats)
+```bash
+docker build -t nextjs-docker .
+docker run -p 3000:3000 nextjs-docker
+```
 
-    a. The components should render on this new tab and show proper values coming from the endpoint.
+docker permission error fix if necessary
 
-    b. Any chart that reflects value based on the endpoint that it is recommended to tuse.
+```bash
+sudo usermod -a -G docker $USER
+newgrp docker
+```
 
-## Deliverable
+## Getting Started
 
-- A React application along with the instructions to satisfy dependencies and run it.
-- The application should be delivered by forking this repository, upload the code and create a PR for reviewing.
+First, install dependencies:
 
-## Tools
+```bash
+npm install
+```
 
-Recommended tools:
-- ReactJs
-- ApexCharts
-- MUI datatables
-- Dockerfile / docker image is preferred.
+Then, run the development server:
 
+```bash
+npm run dev
+```
+
+Build
+
+```bash
+npm run build
+```
+
+## Linter
+
+```bash
+npm run lint
+npm run lint:fix
+```
+
+Linter is integrated with husky (pre-commit), prettier and also with vscode to run on-save following the steps below:
+
+1- Create `.vscode` directory
+2- Create `settings.json` inside of it
+3- Paste the following:
+
+```json
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
+
+## Stack of technologies
+
+- [x] NextJS
+- [x] Typescript
+- [x] Mobx & Mobx State Tree
+- [x] Styled Components
+- [x] ESLint & prettier
+- [x] AntDesign
