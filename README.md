@@ -24,6 +24,9 @@ newgrp docker
 
 ## Getting Started
 
+Setup env.local with env.local.example 
+NEXT_PUBLIC_COBALENT_KEY required
+
 First, install dependencies:
 
 ```bash
